@@ -58,8 +58,6 @@ document.body.appendChild(renderer.domElement);
 var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
 camera.position.set(0, 0, 250);
 
-// const axesHelper = new THREE.AxesHelper(60, 60, 60);
-// scene.add(axesHelper);
 
 var theModel;
 var gltfLoader = new GLTFLoader();
@@ -80,11 +78,8 @@ function initColor(parent, type, mtl) {
   });
 }
 
-gltfLoader.load("./assets/scene.gltf", function (gltf) {
+gltfLoader.load("./assets/gown/scene.gltf", function (gltf) {
   theModel = gltf.scene;
-  // Set the models initial scale
-  //theModel.rotation.y = Math.PI;
-  // Offset the y position a bit
   theModel.position.y = -70;
   // Add the model to the scene
   theModel.traverse((o) => {
