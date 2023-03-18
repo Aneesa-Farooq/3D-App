@@ -7,16 +7,21 @@ import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 // renderer.setSize(window.innerWidth, window.innerHeight);
 // document.body.appendChild(renderer.domElement);
 
+const urlParams=new URLSearchParams(window.location.search);
+const myParam = urlParams.get('texture');
+console.log(myParam);
+
 const TRAY = document.getElementById("js-tray-slide");
+
 
 const colors = [
   {
-    texture: "./assets/flowers.jpg",
+    texture: "/assets/flowers.jpg",
     size: [2, 2, 2],
     shininess: 60,
   },
   {
-    texture: "./assets/flower2.jpg",
+    texture: "/assets/flower2.jpg",
     size: [3, 3, 3],
     shininess: 0,
   },
@@ -35,6 +40,9 @@ const colors = [
   {
     color: "438AAC",
   },
+  {
+    texture: myParam,
+  }
 ];
 
 const BACKGROUND_COLOR = 0xf1f1f1;
@@ -78,7 +86,7 @@ function initColor(parent, type, mtl) {
   });
 }
 
-gltfLoader.load("./assets/gown/scene.gltf", function (gltf) {
+gltfLoader.load("/assets/gown/scene.gltf", function (gltf) {
   theModel = gltf.scene;
   theModel.position.y = -70;
   // Add the model to the scene
